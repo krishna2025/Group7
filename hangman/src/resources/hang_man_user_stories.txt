@@ -1,0 +1,100 @@
+User stories from the Hangman  Game
+1)As a Player, I want to guess the word so that I win the game
+2)As a Player, I want to guess the word but if i fail to guess i should loose my chances
+3)As a player i shold be able to give only alphabet as input
+4) As a player i should get "You Won the game" after successful guess
+5) As a player i should get  "You lost the game" if i fail to gues after 8 chances
+6) As a player i should get the letter from "Hangman" word on every failure and finally after 8 chances i should get the complete Hangman word
+7)As a Player, I want to find the word when system choose random words.
+
+
+As a Player, I want to find the word when system choose random words.
+Given When And Then
+Given file name words.txt
+When I enter if file found
+Then outcome is success
+
+Given When And Then
+Given file name words.txt
+When I enter if file not found
+Then outcome is IOExceptionGuessException
+
+Given When And Then
+Given target  as 1
+When I enter
+Then outcome is "Not Valid Charcter"
+
+
+
+
+1)As a Player, I want to guess the word so that I win the game
+
+Acceptance Criteria for the user stories
+Given When And Then
+Given target as apple
+When I enter a
+Then outcome is a_ _ _ _ _
+
+Given When And Then
+Given target as apple
+When I enter p
+Then outcome is a_ _ _ _ _
+
+Given When And Then
+Given target as apple
+When I enter p
+Then outcome is app_ _
+
+Given When And Then
+Given target as apple
+When I enter l
+Then outcome is appl_
+
+Given When And Then
+Given target as apple
+When I enter e
+Then outcome is apple
+and the out come should be You won the game
+
+2)As a Player, I want to guess the word but if i fail to guess i should loose my chances
+
+Acceptance Criteria for the user stories
+Given When And Then
+Given target as apple
+When I enter b
+Then outcome is "Not matched" , H and You lost the 2 chances
+
+Given When And Then
+Given target as apple
+When I enter o
+Then outcome is "Not matched" , HA, You lost the 3 chances
+
+Given When And Then
+Given target as apple
+When I enter o
+Then outcome is "Not matched" , HAN, You lost the 4 chances
+
+Given When And Then
+Given target as apple
+When I enter c
+Then outcome is "Not matched" , HANG, You lost the 5 chances
+
+Given When And Then
+Given target as apple
+When I enter o
+Then outcome is "Not matched" , HANGM, You lost the 6 chances
+
+Given When And Then
+Given target as apple
+When I enter d
+Then outcome is "Not matched" , HANGMA, You lost the 7 chances
+
+Given When And Then
+Given target as apple
+Then outcome is - - - l-
+
+Given When And Then
+Given target as apple
+When I enter l
+Then outcome is "Not matched" , HANGMAN, You lost the Game
+
