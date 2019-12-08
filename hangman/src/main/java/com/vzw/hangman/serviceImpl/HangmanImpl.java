@@ -9,11 +9,13 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ResourceUtils;
 
 import com.vzw.hangman.exception.IOExceptionGuessException;
 import com.vzw.hangman.exception.InvalidCharException;
 import com.vzw.hangman.service.Hangman;
+import com.vzw.hangman.util.HangManFileUtil;
 import com.vzw.hangman.util.HangmanConstants;
 
 public class HangmanImpl implements Hangman,HangmanConstants {
@@ -22,6 +24,8 @@ public class HangmanImpl implements Hangman,HangmanConstants {
 	String message;
 	boolean gameOver = false;
 	
+	@Autowired
+	HangManFileUtil hangManFileUtil;
 	
 
 	private String myWords[] = null;
@@ -53,18 +57,7 @@ public class HangmanImpl implements Hangman,HangmanConstants {
 		return gameOver;
 	}
 
-	public static List<String> fectchWordList(String fileName) throws IOExceptionGuessException  {
-		List<String> dictionary = new ArrayList<String>();
-
-		try (Stream<String> stream = Files.lines(Paths.get(ResourceUtils.getFile(fileName).getPath()))) {
-
-			return dictionary = stream.collect(Collectors.toList());
-		} catch (IOException e) {
-			throw new IOExceptionGuessException("File Not found Please check");
-			// e.printStackTrace();
-		}
-
-	}
+	
 
 	public static String randomPick(String[] WORDS) {
 
@@ -100,7 +93,7 @@ public class HangmanImpl implements Hangman,HangmanConstants {
 	public HangmanImpl() throws IOExceptionGuessException {
 		myMisses = 0;
 		//myWordIndex = 0;
-		myWords = fectchWordList(HangmanConstants.FILE_NAME).toArray(new String[0]);;
+		myWords = hangManFileUtil.fectchWordList(HangmanConstants.FILE_NAME).toArray(new String[0]);;
 		myLettersUsed = new boolean[Character.MAX_VALUE];
 
 		myWordIndex = new Random().nextInt(myWords.length);

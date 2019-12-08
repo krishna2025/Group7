@@ -13,6 +13,7 @@ import com.vzw.hangman.exception.IOExceptionGuessException;
 import com.vzw.hangman.exception.InvalidCharException;
 import com.vzw.hangman.exception.InvalidInputException;
 import com.vzw.hangman.serviceImpl.HangmanImpl;
+import com.vzw.hangman.util.HangManFileUtil;
 
 public class HangManTest {
 
@@ -26,6 +27,7 @@ public class HangManTest {
 	public void setUp() throws IOExceptionGuessException {
 
 		hangManObj = new HangmanImpl();
+		
 	}
 
 	@Test
@@ -36,14 +38,14 @@ public class HangManTest {
 
 	@Test
 	public void testfile() throws IOExceptionGuessException {
-		List<String> dictionary = hangManObj.fectchWordList("classpath:words.txt");
+		List<String> dictionary = HangManFileUtil.fectchWordList("classpath:words.txt");
 		assertTrue(dictionary.size() > 0);
 
 	}
 
 	@Test(expected = IOExceptionGuessException.class)
 	public void testFileNotFound() throws IOExceptionGuessException {
-		List<String> dictionary = hangManObj.fectchWordList("classpath:word.txt");
+		List<String> dictionary = HangManFileUtil.fectchWordList("classpath:word.txt");
 		assert(dictionary.size() < 0);
 
 	}
