@@ -8,21 +8,7 @@ User stories from the Hangman  Game
 7)As a Player, I want to find the word when system choose random words.
 
 
-As a Player, I want to find the word when system choose random words.
-Given When And Then
-Given file name words.txt
-When I enter if file found
-Then outcome is success
 
-Given When And Then
-Given file name words.txt
-When I enter if file not found
-Then outcome is IOExceptionGuessException
-
-Given When And Then
-Given target  as 1
-When I enter
-Then outcome is "Not Valid Charcter"
 
 
 
@@ -98,3 +84,18 @@ Given target as apple
 When I enter l
 Then outcome is "Not matched" , HANGMAN, You lost the Game
 
+As a Player, I want to find the word when system choose random words.
+Given When And Then
+Given file name words.txt
+When I enter if file found
+Then outcome is success
+
+Given When And Then
+Given file name words.txt
+When I enter if file not found
+Then outcome is IOExceptionGuessException
+
+Given When And Then
+Given target  as 1
+When I enter
+Then outcome is "Not Valid Charcter"
